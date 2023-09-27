@@ -76,9 +76,9 @@ const handleImage = (req, res, db) => {
 
 }
 
-// module.exports = {
-//     handleImage: handleImage,
-//     handleAPI1 : handleAPI1
-// };
+module.exports = {
+    handleImage: handleImage,
+    handleAPI : handleAPI
+};
 
-export default {handleAPI, handleImage};
+// export default {handleAPI, handleImage};

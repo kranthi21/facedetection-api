@@ -1,17 +1,20 @@
-// const express = require('express');
-import express  from 'express';
-import bcrypt from 'bcrypt-nodejs';
-// const bcrypt = require('bcrypt-nodejs');
-import cors from 'cors';
-// const cors = require('cors');
+// import express  from 'express';
+// import bcrypt from 'bcrypt-nodejs';
+// import cors from 'cors';
+
+const express = require('express');
+const bcrypt = require('bcrypt-nodejs');
+const cors = require('cors');
 
 const app = express();
-import knex from 'knex';
-// const knex = require('knex');
-import register from './controllers/register.js';
-import image from './controllers/image.js';
-// const register = require('./controllers/register');
-// const image = require('./controllers/image');
+
+// import knex from 'knex';
+const knex = require('knex');
+
+// import register from './controllers/register.js';
+// import image from './controllers/image.js';
+const register = require('./controllers/register');
+const image = require('./controllers/image');
 
 
 
