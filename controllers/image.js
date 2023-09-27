@@ -81,4 +81,4 @@ module.exports = {
     handleAPI1 : handleAPI1
 };
 
-export {handleAPI, handleImage};
+export default {handleAPI, handleImage};
