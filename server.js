@@ -8,8 +8,8 @@ import cors from 'cors';
 const app = express();
 import knex from 'knex';
 // const knex = require('knex');
-import register from './controllers/register';
-import image from './controllers/image';
+import register from './controllers/register.js';
+import image from './controllers/image.js';
 // const register = require('./controllers/register');
 // const image = require('./controllers/image');
 
@@ -24,10 +24,6 @@ const db = knex({
     }
 });
 
-
-// db.select()
-//   .from('users')
-//   .then(console.log)
 
 app.use(express.json());
 app.use(cors());
