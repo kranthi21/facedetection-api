@@ -68,11 +68,14 @@ const handleImage = (req, res, db) => {
     const {id} = req.body;
     
     db('users')
-    .where({id})
+    .where('id',id)
     .increment('entires', 1)
     .returning('entires')
-    .then(entires => res.json(entires[0].entires))
-    .catch(err => res.status(400).json("unable to get entries"));
+    .then(entires =>{
+        console.log('depl entires', entires) 
+        res.json(entires[0].entires)
+    })
+    .catch(err => res.status(400).json("unable to get entries",err));
 
 }
 
