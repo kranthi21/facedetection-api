@@ -66,14 +66,12 @@ const handleAPI = (req,res) => {
 
 const handleImage = (req, res, db) => {
     const {id} = req.body;
-    console.log('handle image')
     db('users')
     .where('id','=',id)
-    .increment('entires', 1)
-    .returning('entires')
-    .then(entires =>{
-        console.log('depl entires', entires) 
-        res.json(entires[0].entires)
+    .increment('entries', 1)
+    .returning('entries')
+    .then(entries =>{ 
+        res.json(entries[0].entries)
     })
     .catch(err => res.status(400).json("unable to get entries",err));
 
