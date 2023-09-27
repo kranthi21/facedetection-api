@@ -13,14 +13,18 @@ import image from './controllers/image.js';
 // const register = require('./controllers/register');
 // const image = require('./controllers/image');
 
+
+
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-      port : '5432', //5050 
-      user : 'postgres',
-      password : 'test',
-      database : 'face-detection'
+        connectionString: process.env.DATABASE_URL,
+        ssl: {rejectUnauthorized: false },
+        host : process.env.DATABASE_HOST,//'127.0.0.1',
+        port : process.env.DATABASE_PORT,//'5432', //5050 
+        user : process.env.DATABASE_USER,//'postgres',
+        password : process.env.DATABASE_PW,//'test',
+        database : process.env.DATABASE_DB,//'face-detection'
     }
 });
 
