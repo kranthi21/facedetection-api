@@ -1,8 +1,6 @@
 
 
-
-
-const handleAPI1 = (req,res) => {
+const handleAPI = (req,res) => {
     console.log('input', req.body.input);
     // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = '2139bcf4dd074b5d87a1d0da705a73cc';
@@ -66,63 +64,6 @@ const handleAPI1 = (req,res) => {
 //----------------------------------------------------------------------------------------------------------------------
    
 
-const MODEL_ID = 'face-detection';
-const setup_returnRequstOptions = (imgUrl) =>{
-///////////////////////////////////////////////////////////////////////////////////////////////////
-// In this section, we set the user authentication, user and app ID, model details, and the URL
-// of the image we want as an input. Change these strings to run your own example.
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-  // Your PAT (Personal Access Token) can be found in the portal under Authentification
-  const PAT = '2139bcf4dd074b5d87a1d0da705a73cc';
-  // Specify the correct user_id/app_id pairings
-  // Since you're making inferences outside your app's scope
-  const USER_ID = 'ironspidey21';       
-  const APP_ID = 'my-first-application-ygf2gv';
-  // Change these to whatever model and image URL you want to use
-  
-  const IMAGE_URL = imgUrl;
-
-  const raw = JSON.stringify({
-    "user_app_id": {
-        "user_id": USER_ID,
-        "app_id": APP_ID
-    },
-    "inputs": [
-        {
-            "data": {
-                "image": {
-                    "url": IMAGE_URL
-                }
-            }
-        }
-    ]
-  });
-
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Key ' + PAT
-    },
-    body: raw
-  };
-
-  return requestOptions;
-}
-
-
-const handleAPI = (req,res) => {
-    console.log('input', req.body.input);
-    fetch("https://api.clarifai.com/v2/models/" + MODEL_ID +  "/outputs", setup_returnRequstOptions(req.body.input))
-    .then(data => {
-        console.log(data.json())
-        res.json(data);
-    })
-    .catch(err => res.status(400).json('error using API,', err));
-}
-
 const handleImage = (req, res, db) => {
     const {id} = req.body;
     
@@ -139,3 +80,5 @@ module.exports = {
     handleImage: handleImage,
     handleAPI1 : handleAPI1
 };
+
+export {handleAPI, handleImage};

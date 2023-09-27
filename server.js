@@ -1,10 +1,17 @@
-const express = require('express');
-const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
+// const express = require('express');
+import express  from 'express';
+import bcrypt from 'bcrypt-nodejs';
+// const bcrypt = require('bcrypt-nodejs');
+import cors from 'cors';
+// const cors = require('cors');
+
 const app = express();
-const knex = require('knex');
-const register = require('./controllers/register');
-const image = require('./controllers/image');
+import knex from 'knex';
+// const knex = require('knex');
+import register from './controllers/register';
+import image from './controllers/image';
+// const register = require('./controllers/register');
+// const image = require('./controllers/image');
 
 const db = knex({
     client: 'pg',
@@ -73,7 +80,7 @@ app.get('/profile/:id', (req, res) => {
 })
 
 app.put('/image', (req, res) => {image.handleImage(req, res, db)} );
-app.post('/imageUrl', (req, res) => {image.handleAPI1(req, res)});
+app.post('/imageUrl', (req, res) => {image.handleAPI(req, res)});
 
 app.listen(3000, ()=>{
     console.log ('app is onboard');
