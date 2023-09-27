@@ -66,9 +66,9 @@ const handleAPI = (req,res) => {
 
 const handleImage = (req, res, db) => {
     const {id} = req.body;
-    
+    console.log('handle image')
     db('users')
-    .where('id',id)
+    .where('id','=',id)
     .increment('entires', 1)
     .returning('entires')
     .then(entires =>{
